@@ -2,3 +2,18 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.input {
+  padding: 15px 0;
+}
+
+.error {
+  color: lightcoral;
+  padding-left: 10px;
+}
+
+button {
+  height: 25px;
+  background-color: grey;
+  color: white;
+}
