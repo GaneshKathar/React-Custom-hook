@@ -2,18 +2,17 @@ import React from "react";
 
 import { render } from "@testing-library/react";
 
-const renderHook = (hook, intitalValue) => {
-  const HookComponent = ({ children, intitalValue }) =>
-    children(hook(intitalValue));
+const renderHook = (hook, formInputIntialValue) => {
+  const TestComponent = ({ children }) => children(hook(formInputIntialValue));
   const returnValue = {};
 
   render(
-    <HookComponent>
-      {val => {
-        Object.assign(returnValue, val);
+    <TestComponent>
+      {value => {
+        Object.assign(returnValue, value);
         return null;
       }}
-    </HookComponent>
+    </TestComponent>
   );
   return returnValue;
 };

@@ -27,7 +27,9 @@ describe("Use form hook", () => {
     const addressValidator = (value = "") =>
       value.length > 5 ? "" : "too small";
 
-    expect(renderedHook.isValid("address-input", addressValidator)).toEqual("");
+    expect(renderedHook.validate("address-input", addressValidator)).toEqual(
+      ""
+    );
   });
 
   it("should set error for given input key if input value is invalid", () => {
@@ -35,7 +37,7 @@ describe("Use form hook", () => {
     const addressValidator = (value = "") =>
       value.length > 5 ? "" : "too small";
 
-    expect(renderedHook.isValid("address-input", addressValidator)).toEqual(
+    expect(renderedHook.validate("address-input", addressValidator)).toEqual(
       "too small"
     );
     expect(renderedHook.errors).toEqual({ "address-input": "too small" });
@@ -55,7 +57,7 @@ describe("Use form hook", () => {
       "name-input": nameValidator
     };
 
-    expect(renderedHook.isFormValid(validators)).toEqual(false);
+    expect(renderedHook.formValidate(validators)).toEqual(false);
     expect(renderedHook.errors).toEqual({
       "address-input": "too small",
       "name-input": ""

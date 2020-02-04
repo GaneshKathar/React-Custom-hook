@@ -20,15 +20,15 @@ const useForm = () => {
     );
   };
 
-  const isValid = (key, validator) => {
+  const validate = (key, validator) => {
     const message = validator(values[key]);
     setError(key, message);
     return message;
   };
 
-  const isFormValid = validators => {
+  const formValidate = validators => {
     const validations = Object.keys(validators).map(validatorKey =>
-      isValid(validatorKey, validators[validatorKey])
+      validate(validatorKey, validators[validatorKey])
     );
     return validations.every(validationMessage => validationMessage === "");
   };
@@ -37,7 +37,15 @@ const useForm = () => {
     setValue(event.target.id, event.target.value);
   };
 
-  return { values, setValue, errors, isValid, isFormValid, onChange, setError };
+  return {
+    values,
+    setValue,
+    errors,
+    validate,
+    formValidate,
+    onChange,
+    setError
+  };
 };
 
 export default useForm;

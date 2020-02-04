@@ -34,11 +34,11 @@ const validators = {
 
 export default function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const { values, errors, isFormValid, onChange } = useForm();
+  const { values, errors, formValidate, onChange } = useForm();
 
   const onSubmit = e => {
     e.preventDefault();
-    if (isFormValid(validators)) {
+    if (formValidate(validators)) {
       setFormSubmitted(true);
     }
   };
